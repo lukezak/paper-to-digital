@@ -1,0 +1,107 @@
+﻿@model PaperToDigital.ViewModels.UploadViewModel
+@{
+    ViewBag.Title = "Paper to Digital";
+}
+
+<div class="small-12 columns">
+
+    <div class="fixed">
+        <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">Paper to Digital</a></h1>
+                </li>
+            </ul>
+
+            <section class="top-bar-section">
+                <ul class="right">
+                    <li class="divider"></li>
+                    <li class="has-form"><button type="submit" class="button" onclick="$('#progress').foundation('reveal', 'open');"><i class="fa fa-upload"></i> Upload</button></li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+
+    <dl class="accordion" data-accordion>
+        <dd>
+            <a href="#panel1"><i class="fa fa-cog"></i> System identifiers (optional)</a>
+            <div id="panel1" class="content">
+
+                <fieldset>
+                    <legend>System information</legend>
+                    <label for="unique-id">Unique identifier:</label>
+                    @Html.TextBoxFor(m => m.unique)
+
+                    <label for="page">Page number:</label>
+                    @Html.TextBoxFor(m => m.page)
+
+                </fieldset>
+
+            </div>
+        </dd>
+        <dd>
+            <a href="#panel2"><i class="fa fa-info-circle"></i> Metadata (optional)</a>
+            <div id="panel2" class="content">
+
+                <fieldset>
+                    <legend>Record information</legend>
+
+                    <label for="lang">Language:</label>
+                    @Html.DropDownListFor(m => m.lang, new SelectList(new PaperToDigital.ViewModels.UploadViewModel().GetLang(), "SelectId", "lang"))
+
+                    <label for="title">Title:</label>
+                    @Html.TextBoxFor(m => m.title)
+
+                    <label for="desc">Description:</label>
+                    @Html.TextAreaFor(m => m.desc)
+
+                    <label for="creator">Creator:</label>
+                    @Html.TextBoxFor(m => m.creator)
+
+                    <label for="publisher">Publisher:</label>
+                    @Html.TextBoxFor(m => m.publisher)
+
+                    <label for="date">Date:</label>
+                    @Html.TextBoxFor(m => m.date, new { data_date_format = "yyyy-mm-dd" })
+
+                    <label for="subject">Subject:</label>
+                    @Html.TextBoxFor(m => m.subject)
+
+                    <label for="category">Category:</label>
+                    @Html.TextBoxFor(m => m.category)
+
+                    <label for="rights">Rights:</label>
+                    @Html.TextBoxFor(m => m.rights)
+
+                </fieldset>
+
+            </div>
+        </dd>
+        <dd>
+            <a href="#panel3"><i class="fa fa-camera"></i> Capture</a>
+            <div id="panel3" class="content active">
+
+                <fieldset>
+                    <legend>Take picture @Html.ValidationMessage("file")</legend>
+                    <div class="fileUpload button secondary">
+                        <span><i class="fa fa-camera fa-lg"></i></span>
+                        @Html.TextBoxFor(m => m.file, new { type = "file", accept = "image/*", capture = "camera", @class = "upload" })
+                    </div>
+                </fieldset>
+                <div id="crop-container">
+                    <button title="Crop" id="crop" class="tiny secondary right"><i class="fa fa-crop fa-2x"></i></button>
+                    <img id="preview" alt="" class="image" />
+                    @Html.TextBoxFor(m => m.hdncoords, new { type = "hidden" })
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div id="progress" class="reveal-modal large" data-reveal>
+        <h2>Uploading</h2>
+        <p>
+            <img src="/Content/images/ajax-loader.gif" alt="Loading" />
+            <span class="wait">Please wait...</span>
+        </p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+</div>

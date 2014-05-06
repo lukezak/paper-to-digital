@@ -1,0 +1,66 @@
+﻿/* styles for app */
+#crop-container{
+    position:relative;
+}
+#crop{
+    display:none;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+    font-size:1.2em;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* styles for custom file input */
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+    width:93%;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor:default;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+/* Foundation overrides */
+
+.column, .columns {
+    padding-left:0;
+    padding-right:0;
+}
+.accordion dd > a
+{
+    padding:0.75rem;
+}
