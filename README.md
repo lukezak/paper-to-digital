@@ -3,6 +3,8 @@ paper-to-digital
 
 Using a mobile device, convert paper files to digital.
 
+The MIT License (MIT)
+
 Copyright (c) 2014 Luke Pasturczak
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
